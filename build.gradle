@@ -1,0 +1,12 @@
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+  compile group: 'net.sf.opencsv', name: 'opencsv', version: '2.0'
+  compile group: 'com.xlson.groovycsv', name: 'groovycsv', version: '1.0'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion '2.2.1'
+}

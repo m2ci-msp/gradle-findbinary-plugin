@@ -1,0 +1,13 @@
+# Gradle
+.gradle/
+build/
+
+# IDEA
+.idea/
+*.iml
+
+# Misc
+.DS_Store
+*.swp
+*~
+*.orig
