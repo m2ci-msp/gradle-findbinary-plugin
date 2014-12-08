@@ -11,7 +11,7 @@ import org.gradle.api.Project
 
 class FindBinaryExtension implements Configurable<FindBinaryExtension> {
 
-    private File path;
+    private String path;
 
     @Override
     public FindBinaryExtension configure(@SuppressWarnings("rawtypes") Closure cl) {
@@ -28,11 +28,11 @@ class FindBinaryExtension implements Configurable<FindBinaryExtension> {
       return this;
     }
 
-    public File get_path() {
+    public String get_path() {
       return this.path
     }
 
-    public FindPathExtension(Project project) {
+    public FindBinaryExtension(Project project) {
     }
 
 }
