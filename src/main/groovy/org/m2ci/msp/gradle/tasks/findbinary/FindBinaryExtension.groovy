@@ -9,12 +9,13 @@ import org.gradle.api.Project
 
 class FindBinaryExtension implements Configurable<FindBinaryExtension> {
 
+    private project = null
     private String path = null;
 
     @Override
     public FindBinaryExtension configure(@SuppressWarnings("rawtypes") Closure cl) {
 
-      def binary_finder = ConfigureUtil.configure(cl, new FindBinaryLinux());
+      def binary_finder = ConfigureUtil.configure(cl, new FindBinaryLinux(this.project));
 
       this.path = binary_finder.search();
 
@@ -26,6 +27,7 @@ class FindBinaryExtension implements Configurable<FindBinaryExtension> {
     }
 
     public FindBinaryExtension(Project project) {
+      this.project = project
     }
 
 }
