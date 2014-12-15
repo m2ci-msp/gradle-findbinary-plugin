@@ -64,7 +64,7 @@ class FindBinary {
       def binary_path = new File( candidate + File.separator + this.binary_name )
 
         // verify that the found path points to a file and that the file is executable
-        if( binary_path.isFile() == true && found.canExecute() ) {
+        if( binary_path.isFile() == true && binary_path.canExecute() ) {
           return binary_path
         }
         else {

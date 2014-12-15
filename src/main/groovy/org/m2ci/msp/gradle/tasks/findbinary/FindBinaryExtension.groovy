@@ -22,7 +22,7 @@ class FindBinaryExtension implements Configurable<FindBinaryExtension> {
       return this;
     }
 
-    public String get_path() {
+    public String getPath() {
       return this.path
     }
 
