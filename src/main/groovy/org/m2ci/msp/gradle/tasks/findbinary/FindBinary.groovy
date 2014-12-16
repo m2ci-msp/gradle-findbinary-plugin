@@ -88,9 +88,14 @@ class FindBinary {
       // the desired name
       def files = this.project.fileTree(path) {
         exclude {
-          File[] children = it.file.listFiles();
-          File[] nullobject = null;
-          return (children == nullobject)
+          if(it.file.isDirectory()) {
+            File[] children = it.file.listFiles();
+            if( children == null ) {
+              return true
+            }
+          }
+
+            return false
           }
       }
 
