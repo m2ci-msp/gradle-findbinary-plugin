@@ -87,6 +87,10 @@ class FindBinary {
       // create file tree of directories containing the files with
       // the desired name
       def files = this.project.fileTree(path) {
+        exclude { it.file.canRead() == false }
+      }
+
+      files = file.matching {
         include "**/$binary_name"
       }
 
