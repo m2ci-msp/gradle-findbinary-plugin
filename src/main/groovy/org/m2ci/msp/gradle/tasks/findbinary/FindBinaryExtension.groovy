@@ -1,6 +1,6 @@
 package org.m2ci.msp.gradle.tasks.findbinary
 
-import org.apache.commons.lang.SystemUtils
+import org.apache.commons.lang3.SystemUtils
 
 import groovy.lang.Closure;
 import org.gradle.util.Configurable;
@@ -30,6 +30,10 @@ class FindBinaryExtension implements Configurable<FindBinaryExtension> {
       }
 
       this.path = binary_finder.search();
+
+      if( this.path == null ) {
+        println "Warning: Binary was not found."
+      }
 
       return this;
     }
