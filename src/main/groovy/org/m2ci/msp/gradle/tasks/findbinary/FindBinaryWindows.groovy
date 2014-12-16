@@ -7,8 +7,10 @@ class FindBinaryWindows extends FindBinary {
 
     public FindBinaryWindows(Project project) {
 
-      // call constructor of parent class
-      super(project)
+      this.project = project
+
+      // initialize candidates to path environment
+      path_candidates = System.getenv()["Path"].tokenize(File.pathSeparator)
 
       // activate recursive search
       super.recursive = true
