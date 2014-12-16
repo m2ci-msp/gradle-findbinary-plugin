@@ -103,6 +103,8 @@ class FindBinary {
         include "**/$binary_name"
       }
 
+      println "Tree filtered"
+
       // find first path that points to a file which is executable
       return files.findResult{ found ->
         if( found.isFile() == true && found.canExecute() == true ) {
