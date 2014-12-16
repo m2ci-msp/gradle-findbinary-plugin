@@ -90,7 +90,7 @@ class FindBinary {
         exclude { it.getFile().canRead() == false }
       }
 
-      files = file.matching {
+      files = files.matching {
         include "**/$binary_name"
       }
 
