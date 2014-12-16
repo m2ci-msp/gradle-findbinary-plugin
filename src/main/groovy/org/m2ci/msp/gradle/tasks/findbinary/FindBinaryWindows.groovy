@@ -7,7 +7,7 @@ class FindBinaryWindows extends FindBinary {
 
     public FindBinaryWindows(Project project) {
 
-      this.project = project
+      super(project)
 
       // initialize candidates to path environment
       path_candidates = System.getenv()["Path"].tokenize(File.pathSeparator)

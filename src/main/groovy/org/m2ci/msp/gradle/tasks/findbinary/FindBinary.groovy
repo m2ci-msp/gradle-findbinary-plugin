@@ -15,7 +15,11 @@ class FindBinary {
       this.project = project
 
       // initialize candidates to path environment
-      path_candidates = System.getenv()["PATH"].tokenize(File.pathSeparator)
+      def path = System.getenv()["PATH"]
+
+      if (path != null) {
+        path_candidates = path.tokenize(File.pathSeparator)
+      }
 
   }
 
