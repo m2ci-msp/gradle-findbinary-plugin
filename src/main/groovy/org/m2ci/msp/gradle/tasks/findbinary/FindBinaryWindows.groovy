@@ -9,9 +9,6 @@ class FindBinaryWindows extends FindBinary {
 
       super(project)
 
-      // initialize candidates to path environment
-      path_candidates = System.getenv()["Path"].tokenize(File.pathSeparator)
-
       // activate recursive search
       super.recursive = true
 
@@ -22,6 +19,12 @@ class FindBinaryWindows extends FindBinary {
       // remove duplicate entries
       super.path_candidates.unique()
 
+    }
+
+    // do not add directories from the path environment under Windows,
+    // we might have no read access
+    @Override
+    protected void addPathsFromEnvironment() {
     }
 
 }
