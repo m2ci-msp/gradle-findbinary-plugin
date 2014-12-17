@@ -52,6 +52,11 @@ class FindBinary {
 
     }
 
+    // throw exception if no path was found
+    if( result == null ) {
+      throw new FileNotFoundException()
+    }
+
     return result
 
   }
@@ -63,8 +68,8 @@ class FindBinary {
       // construct binary path for current candidate
       def binary_path = new File( candidate + File.separator + this.binary_name )
 
-        // verify that the found path points to a file and that the file is executable
-        if( binary_path.isFile() == true && binary_path.canExecute() ) {
+        // verify that the found path points to a file and that the file is readable and executable
+        if( isReadableExecutable(binary_path) ) {
           return binary_path
         }
         else {
@@ -87,6 +92,9 @@ class FindBinary {
       // create file tree of directories containing the files with
       // the desired name
       def files = this.project.fileTree(path) {
+        include "**/$binary_name"
+        // exclude directories that can not be listed due to access rights or
+        // other reasons
         exclude {
           if(it.file.isDirectory()) {
             File[] children = it.file.listFiles();
@@ -99,15 +107,9 @@ class FindBinary {
           }
       }
 
-      files = files.matching {
-        include "**/$binary_name"
-      }
-
-      println "Tree filtered"
-
-      // find first path that points to a file which is executable
+      // find first path that points to a file which is readable and executable
       return files.findResult{ found ->
-        if( found.isFile() == true && found.canExecute() == true ) {
+        if( isReadableExecutable(found) ) {
           return found
         }
         else {
@@ -119,6 +121,10 @@ class FindBinary {
 
     return result
 
+  }
+
+  protected boolean isReadableExecutable(File path) {
+    return ( path.isFile() && path.canRead() && path.canExecute() ) 
   }
 
   protected void addPathsFromEnvironment() {

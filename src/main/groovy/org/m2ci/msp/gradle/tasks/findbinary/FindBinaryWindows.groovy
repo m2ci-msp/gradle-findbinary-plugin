@@ -13,18 +13,27 @@ class FindBinaryWindows extends FindBinary {
       super.recursive = true
 
       // add program files paths
-      super.path_candidates.add(System.getenv('ProgramFiles'))
-      super.path_candidates.add(System.getenv('ProgramFiles(x86)'))
+      def programFiles = System.getenv('ProgramFiles')
+      def programFiles86 = System.getenv('ProgramFiles(x86)')
+
+      if( programFiles != null ) {
+        super.path_candidates.add(programFiles)
+      }
+
+      if( programFiles86 != null ) {
+        super.path_candidates.add(programFiles86)
+      }
 
       // remove duplicate entries
       super.path_candidates.unique()
 
     }
 
-    // do not add directories from the path environment under Windows,
-    // we might have no read access
     @Override
     protected void addPathsFromEnvironment() {
+      def path = System.getenv()["Path"]
+        if (path != null) {
+          path_candidates = path.tokenize(File.pathSeparator)
+        }
     }
-
 }
