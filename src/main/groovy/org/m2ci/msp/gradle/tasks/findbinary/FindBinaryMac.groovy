@@ -10,7 +10,21 @@ class FindBinaryMac extends FindBinary {
       // call constructor of parent class
       super(project)
 
-      // FIXME: nothing to see here yet, move along!
+    }
+
+    @Override
+    public void binary(String name) {
+
+      super.binary_name = name
+
+      // generate path to Application bundle that might exist
+      // and add it to the beginning of the list
+      super.path_candidates.add(0,
+        File.separator + "Applications" + File.separator +
+        "${name}.app" + File.separator + "Contents" +
+        File.separator +
+        "MacOS"
+        )
 
     }
 
