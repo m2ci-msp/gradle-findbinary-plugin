@@ -18,7 +18,7 @@ class FindBinaryMac extends FindBinary {
       super.binary_name = name
 
       // generate path to Application bundle that might exist
-      // and add it to the beginning of the list
+      // and add it to the beginning of the list of candidates
       super.path_candidates.add(0,
         File.separator + "Applications" + File.separator +
         "${name}.app" + File.separator + "Contents" +

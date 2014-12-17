@@ -54,7 +54,7 @@ class FindBinary {
 
     // throw exception if no path was found
     if( result == null ) {
-      throw new FileNotFoundException()
+      throw new FileNotFoundException("Could not find binary [$binary_name]")
     }
 
     return result
