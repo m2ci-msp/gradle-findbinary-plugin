@@ -17,15 +17,15 @@ class FindBinaryWindows extends FindBinary {
       def programFiles86 = System.getenv('ProgramFiles(x86)')
 
       if( programFiles != null ) {
-        super.path_candidates.add(programFiles)
+        super.pathCandidates.add(programFiles)
       }
 
       if( programFiles86 != null ) {
-        super.path_candidates.add(programFiles86)
+        super.pathCandidates.add(programFiles86)
       }
 
       // remove duplicate entries
-      super.path_candidates.unique()
+      super.pathCandidates.unique()
 
     }
 
@@ -33,7 +33,7 @@ class FindBinaryWindows extends FindBinary {
     protected void addPathsFromEnvironment() {
       def path = System.getenv()["Path"]
         if (path != null) {
-          path_candidates = path.tokenize(File.pathSeparator)
+          pathCandidates = path.tokenize(File.pathSeparator)
         }
     }
 }
