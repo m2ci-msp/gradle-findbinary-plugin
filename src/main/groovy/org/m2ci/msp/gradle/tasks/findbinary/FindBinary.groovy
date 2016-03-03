@@ -13,10 +13,10 @@ class FindBinary {
 
   public FindBinary(Project project) {
 
-      this.project = project
+    this.project = project
 
-      // initialize candidates to path environment
-      addPathsFromEnvironment()
+    // initialize candidates to path environment
+    addPathsFromEnvironment()
 
   }
 
@@ -69,13 +69,13 @@ class FindBinary {
       // construct binary path for current candidate
       def binaryPath = new File( candidate + File.separator + this.binaryName )
 
-        // verify that the found path points to a file and that the file is readable and executable
-        if( isReadableExecutable(binaryPath) ) {
-          return binaryPath
-        }
-        else {
-          return null
-        }
+      // verify that the found path points to a file and that the file is readable and executable
+      if( isReadableExecutable(binaryPath) ) {
+        return binaryPath
+      }
+      else {
+        return null
+      }
 
     } // end closure
 
@@ -117,7 +117,16 @@ class FindBinary {
     def path = System.getenv()["PATH"]
 
     if (path != null) {
-      pathCandidates = path.tokenize(File.pathSeparator)
+
+      // ensure that the paths actually exist
+      path.tokenize(File.pathSeparator).each{ currentPath ->
+
+        if( (new File(currentPath) ).exists() ) {
+          pathCandidates.add(currentPath)
+        }
+
+      }
+
     }
 
   }
