@@ -15,11 +15,11 @@ class FindBinaryMac extends FindBinary {
     @Override
     public void binary(String name) {
 
-      super.binary_name = name
+      super.binaryName = name
 
       // generate path to Application bundle that might exist
       // and add it to the beginning of the list of candidates
-      super.path_candidates.add(0,
+      super.pathCandidates.add(0,
         File.separator + "Applications" + File.separator +
         "${name}.app" + File.separator + "Contents" +
         File.separator +
