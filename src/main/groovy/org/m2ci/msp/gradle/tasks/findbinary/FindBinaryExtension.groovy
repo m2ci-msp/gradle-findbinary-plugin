@@ -17,19 +17,19 @@ class FindBinaryExtension implements Configurable<FindBinaryExtension> {
     @Override
     public FindBinaryExtension configure(@SuppressWarnings("rawtypes") Closure cl) {
 
-      def binary_finder = null
+      def binaryFinder = null
 
       if( SystemUtils.IS_OS_WINDOWS ) {
-        binary_finder = ConfigureUtil.configure(cl, new FindBinaryWindows(this.project));
+        binaryFinder = ConfigureUtil.configure(cl, new FindBinaryWindows(this.project));
       }
       else if ( SystemUtils.IS_OS_MAC) {
-        binary_finder = ConfigureUtil.configure(cl, new FindBinaryMac(this.project));
+        binaryFinder = ConfigureUtil.configure(cl, new FindBinaryMac(this.project));
       }
       else {
-        binary_finder = ConfigureUtil.configure(cl, new FindBinary(this.project));
+        binaryFinder = ConfigureUtil.configure(cl, new FindBinary(this.project));
       }
 
-      this.path = binary_finder.search();
+      this.path = binaryFinder.search();
 
       if( this.path == null ) {
         println "Warning: Binary was not found."

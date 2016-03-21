@@ -30,6 +30,13 @@ class FindBinaryWindows extends FindBinary {
   }
 
   @Override
+  public void binary(String name) {
+
+    this.binaryName = name + ".exe"
+
+  }
+
+  @Override
   protected void addPathsFromEnvironment() {
     def path = System.getenv()["Path"]
     if (path != null) {
