@@ -6,7 +6,7 @@ apply plugin: 'groovy'
 apply plugin: 'maven-publish'
 
 group 'org.m2ci.msp'
-version '0.3'
+version '0.4'
 
 repositories {
   mavenCentral()
@@ -18,7 +18,7 @@ publishing {
       from components.java
       groupId 'org.m2ci.msp'
       artifactId 'gradle-findbinary-plugin'
-      version '0.3'
+      version '0.4'
     }
   }
 }
@@ -34,10 +34,10 @@ bintray {
     licenses = ['GPL-3.0']
     vcsUrl = 'https://github.com/m2ci-msp/gradle-findbinary-plugin.git'
     version {
-      name = '0.3'
-      desc = 'Gradle Findbinary Plugin 0.3'
+      name = '0.4'
+      desc = 'Gradle Findbinary Plugin 0.4'
       released  = new Date()
-      vcsTag = '0.3.0'
+      vcsTag = '0.4.0'
     }
   }
 }
