@@ -12,8 +12,13 @@ class FindBinaryWindows extends FindBinary {
     // activate recursive search
     super.recursive = true
 
-    // add program files paths
-    def programFiles = System.getenv('ProgramFiles')
+    // add program files paths (look in both Program Files and Program Files (x86))
+
+    // force using the Program Files directory with no suffix, as 
+    // "Program  Files (x86)" is returned if using 32 bit JVM
+    def programFiles = System.getenv('ProgramFiles').replace(" (x86)", "")
+
+    // explicitly ask for x86
     def programFiles86 = System.getenv('ProgramFiles(x86)')
 
     if( programFiles != null ) {
