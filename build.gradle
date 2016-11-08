@@ -20,7 +20,7 @@ publishing {
       from components.java
       groupId 'org.m2ci.msp'
       artifactId 'gradle-findbinary-plugin'
-      version '0.4'
+      version '0.5'
     }
   }
 }
@@ -36,17 +36,17 @@ bintray {
     licenses = ['GPL-3.0']
     vcsUrl = 'https://github.com/m2ci-msp/gradle-findbinary-plugin.git'
     version {
-      name = '0.4'
-      desc = 'Gradle Findbinary Plugin 0.4'
+      name = '0.5'
+      desc = 'Gradle Findbinary Plugin 0.5'
       released  = new Date()
-      vcsTag = '0.4.0'
+      vcsTag = '0.5.0'
     }
   }
 }
 
 dependencies {
   compile gradleApi()
-  compile localGroovy()
+  compile 'org.codehaus.groovy:groovy-all:2.4.7'
   compile 'org.apache.commons:commons-lang3:3.3.2'
 }
 
