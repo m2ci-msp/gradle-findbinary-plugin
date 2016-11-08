@@ -8,6 +8,8 @@ apply plugin: 'maven-publish'
 group 'org.m2ci.msp'
 version '0.4'
 
+targetCompatibility = 1.7
+
 repositories {
   mavenCentral()
 }
@@ -49,5 +51,5 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion '2.13'
+  gradleVersion '3.1'
 }
